@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Max Goch</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="./style.css" rel="stylesheet">
+    <style>
+        body {
+            background: #1f242d;
+            color: white;
+            font-family: 'Lucida Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+  
+        /* Navbar (reuse from main page) */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 9%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: #1f242d;
+        }
+        .navbar .logo { font-size: 30px; font-weight: 700; }
+        .navbar ul { display: flex; }
+        .navbar ul li { list-style: none; margin-left: 35px; }
+        .navbar ul li a { color: white; font-size: 20px; font-weight: 500; text-decoration: none; }
+        .navbar ul li:hover a, .navbar ul li.active a { color: greenyellow; }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 120px 9% 80px; /* extra top padding for navbar */
+            text-align: center;
+        }
+        .portfolio h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: greenyellow;
+        }
+        .portfolio-grid {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .portfolio-item {
+            background: #1f242d;
+            border: 2px solid greenyellow;
+            border-radius: 15px;
+            box-shadow: 0 0 15px greenyellow;
+            width: 300px;
+            padding: 15px;
+            text-align: left;
+            transition: transform 0.3s;
+            margin: 40px;
+        }
+        .portfolio-item:hover { transform: translateY(-5px); }
+        .portfolio-item img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
+        .portfolio-text h3 { font-size: 20px; margin-bottom: 10px; color: greenyellow; }
+        .portfolio-text p { font-size: 16px; margin-bottom: 15px; }
+        .portfolio-text .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: greenyellow;
+            border: 2px solid greenyellow;
+            border-radius: 10px;
+            color: #1f242d;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .portfolio-text .btn:hover {
+            background: transparent;
+            color: greenyellow;
+            box-shadow: none;
+        }
+.portfolio-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* push button to bottom */
+    background: #1f242d;
+    border: 2px solid greenyellow;
+    border-radius: 15px;
+    box-shadow: 0 0 15px greenyellow;
+    width: 300px;
+    padding: 15px;
+    text-align: left;
+    transition: transform 0.3s;
+}
+
+.portfolio-text {
+    flex-grow: 1; /* text takes available space */
+}
+
+.portfolio-text .btn-wrapper {
+    text-align: center; /* centers button horizontally */
+    margin-top: 10px;   /* optional spacing above button */
+}
+
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Portfolio.</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Service</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="portfolio">
+        <h2>My Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="/My Project/Maksat Gochyyev/images/friends.jpg" alt="Project 1">
+                <div class="portfolio-text">
+                    <h3>Project One</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                    <div class="btn-wrapper">
+                        <a href="https://example.com/project1" target="_blank" class="btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="/My Project/Maksat Gochyyev/images/meet.jpg" alt="Project 2">
+                <div class="portfolio-text">
+                    <h3>Project Two</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500sLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                    <div class="btn-wrapper">
+                        <a href="https://example.com/project1" target="_blank" class="btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="/My Project/Maksat Gochyyev/images/dev.png" alt="Project 3">
+                <div class="portfolio-text">
+                    <h3>Project Three</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                    <div class="btn-wrapper">
+                        <a href="https://example.com/project1" target="_blank" class="btn">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

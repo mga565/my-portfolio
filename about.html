@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Me</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #1f242d;
+  --accent: greenyellow;
+  --tile-base: #1b222b;
+  --tile-mid: #22313a;
+  --tile-border: #2a3942;
+  --gap: 10px;
+  --tile-anim: 2.8s;
+  --delay-step: 90ms;
+  --tile-radius: 10px;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background: var(--bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 25px 9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  background: rgba(0,0,0,0.8);
+  border-bottom: 2px solid var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  backdrop-filter: blur(4px);
+}
+.navbar .logo { font-size: 30px; font-weight: 700; }
+.navbar ul { display: flex; margin:0; padding:0; }
+.navbar ul li { list-style: none; margin-left: 35px; }
+.navbar ul li a { color: white; font-size: 20px; font-weight: 500; text-decoration: none; transition: color .25s; }
+.navbar ul li:hover a, .navbar ul li.active a { color: var(--accent); }
+
+/* Add top padding for fixed navbar */
+main { padding-top: 120px; position: relative; z-index: 1; }
+
+/* Sections layering above background */
+section, footer { position: relative; z-index: 1; }
+
+/* HERO */
+.hero { text-align: center; padding: 6rem 1rem 4rem; }
+.hero h1 {
+  font-size: 3rem; color: var(--accent);
+  text-shadow: 0 0 10px var(--accent); margin:0 0 .5rem 0;
+}
+.hero p { font-size:1.3rem; max-width:760px; margin:0 auto; opacity:0.95; }
+
+/* ABOUT */
+.about {
+  max-width:1100px; margin:0 auto; padding:4rem 2rem;
+  display:flex; align-items:center; gap:2rem; flex-wrap:wrap;
+}
+.about img {
+  flex:1 1 340px; max-width:100%; border-radius:20px;
+  border:2px solid var(--accent); box-shadow:0 0 15px var(--accent);
+}
+.about-text { flex:1 1 340px; }
+.about-text h2 { color:var(--accent); font-size:2rem; margin:0 0 1rem 0; }
+.about-text p { font-size:1.15rem; }
+
+/* SKILLS */
+.skills { padding:4rem 2rem; background: rgba(255,255,255,0.05);
+  border-top:2px solid rgba(173,255,47,0.25);
+  border-bottom:2px solid rgba(173,255,47,0.25);
+}
+.skills h2 { text-align:center; color:var(--accent); margin:0 0 2rem 0; }
+.skill-list { display:flex; justify-content:center; flex-wrap:wrap; gap:1rem 1.25rem; max-width:1100px; margin:0 auto; }
+.skill {
+  padding:0.85rem 1.25rem; border:2px solid var(--accent); border-radius:12px;
+  box-shadow:0 0 10px var(--accent); background:transparent; font-weight:700; font-size:1rem; white-space:nowrap;
+}
+
+/* INTERESTS */
+.interests { max-width:1100px; margin:0 auto; padding:4rem 2rem; }
+.interests h2 { text-align:center; color:var(--accent); margin:0 0 2rem 0; }
+.interest-item { margin-bottom:1.25rem; border-left:4px solid var(--accent); padding-left:1rem; font-size:1.1rem; }
+
+/* QUOTE */
+.quote { padding:4rem 2rem; text-align:center; font-size:1.5rem; font-style:italic;
+  background: rgba(0,0,0,0.5); border-top:2px solid var(--accent); border-bottom:2px solid var(--accent);
+  box-shadow:0 0 10px var(--accent);
+}
+
+/* FOOTER */
+footer { text-align:center; padding:2rem; background:rgba(0,0,0,0.8); font-size:0.9rem; border-top:2px solid var(--accent); color:#bbb; }
+
+/* ANIMATED SQUARES BACKGROUND */
+.squares-bg {
+  position: fixed; inset:0; z-index:0; pointer-events:none;
+  display:grid; grid-template-columns:repeat(var(--cols,16),1fr);
+  grid-template-rows:repeat(var(--rows,10),1fr); gap:var(--gap); padding:var(--gap); opacity:0.9;
+}
+.sq {
+  border-radius:var(--tile-radius);
+  background:var(--tile-base);
+  border:1px solid var(--tile-border);
+  box-shadow: inset 0 0 0 1px rgba(173,255,47,0.06);
+  transform: scale(1);
+  animation: wavePulse var(--tile-anim) ease-in-out infinite;
+  animation-delay: var(--d,0ms);
+  will-change: transform, box-shadow, background-color;
+}
+@keyframes wavePulse {
+  0%,100% { transform: scale(1); background:var(--tile-base); box-shadow:inset 0 0 0 1px rgba(173,255,47,0.06); }
+  50% { transform: scale(1.12); background:var(--tile-mid); box-shadow:0 0 12px rgba(173,255,47,0.22), inset 0 0 0 1px rgba(173,255,47,0.25); }
+}
+
+@media(max-width:720px){ .hero h1{font-size:2.4rem;} .hero p,.about-text p{font-size:1.05rem;} }
+</style>
+</head>
+<body>
+
+<div id="bg-grid" class="squares-bg" aria-hidden="true"></div>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">Portfolio.</a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li class="active"><a href="about.html">About</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="hero">
+    <h1>Maksat Gochyyev</h1>
+    <p>Engineer • Manager • Designer • AI Enthusiast — blending logic and creativity to build clean, bold, and modern experiences.</p>
+  </section>
+
+  <section class="about">
+    <img src="https://via.placeholder.com/500x500" alt="Your photo">
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>Hello! I’m Max, originally from Turkmenistan and currently in Japan. I enjoy shipping things that feel sharp, simple, and alive — from web interfaces to graphics. My background crosses business, design, and deep learning AI. I keep learning, experimenting, and polishing the craft every day.</p>
+      <p>Values: clarity, speed, and a bit of playful glow ✨</p>
+    </div>
+  </section>
+
+  <section class="skills">
+    <h2>Skills</h2>
+    <div class="skill-list">
+      <div class="skill">HTML/CSS/JS</div>
+      <div class="skill">Python</div>
+      <div class="skill">Deep Learning</div>
+      <div class="skill">Graphic Design</div>
+      <div class="skill">SMM</div>
+      <div class="skill">Management</div>
+    </div>
+  </section>
+
+  <section class="interests">
+    <h2>Interests</h2>
+    <div class="interest-item"><strong>Japanese Culture —</strong> history, language, and the calm precision in everyday design.</div>
+    <div class="interest-item"><strong>Travel —</strong> new places, new food, new people.</div>
+    <div class="interest-item"><strong>Design —</strong> minimal layouts with just the right glow and motion.</div>
+  </section>
+
+  <section class="quote">
+    “At the edge of technology and design — that’s where the fun starts.”
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Maksat Gochyyev. All rights reserved.
+</footer>
+
+<script>
+(function() {
+  const grid = document.getElementById('bg-grid');
+  const TILE = 70;
+  const build = () => {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const cols = Math.ceil(w / (TILE + 10));
+    const rows = Math.ceil(h / (TILE + 10));
+    grid.style.setProperty('--cols', cols);
+    grid.style.setProperty('--rows', rows);
+    grid.innerHTML = '';
+    for(let y=0;y<rows;y++){
+      for(let x=0;x<cols;x++){
+        const d = x+y;
+        const el=document.createElement('div');
+        el.className='sq';
+        el.style.setProperty('--d',`calc(${d}*var(--delay-step))`);
+        grid.appendChild(el);
+      }
+    }
+  };
+  window.addEventListener('resize', build);
+  build();
+})();
+</script>
+</body>
+</html>
